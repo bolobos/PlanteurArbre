@@ -3,10 +3,13 @@
 #define MOTOR2 5
 #define MOTOR3 6
 #define MOTOR4 9
-//Valve d'air comprimé pour la graine
+//Valve d'air comprimï¿½ pour la graine
 #define VALVE = 1
 //Capteur laser (Analogique ?)
-#define LASER = 0x01 //Hexadécimal = analogique
+#define LASER = 0x01 //Hexadï¿½cimal = analogique
+#define ANEMOMETRE 
+#define LEDS
+#define GIROUETTE
 
 void setup() {
 	pinMode(MOTOR1, OUTPUT);
@@ -16,6 +19,9 @@ void setup() {
 
 	pinMode(VALVE, OUTPUT);
 	pinMode(LASER, INPUT);
+	pinMode(ANEMOMETRE, INPUT);
+	pinMode(GIROUETTE, INPUT)
+	pinMode(LEDS, OUTPUT)
 }
 
 void loop() {
