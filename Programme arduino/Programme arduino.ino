@@ -27,3 +27,32 @@ void setup() {
 void loop() {
 	
 }
+
+
+
+
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////// MOTEUR
+int brochePotent=A0;
+int brocheMot=9;
+
+int valPotent=0;
+int valVitesse=0;
+
+void setup () {
+   Serial.begin(9600);
+}
+
+void loop () {
+   valPotent=analogRead(brochePotent);
+   valVitesse=map(valPotent, 0, 1023, 0, 255);
+   analogWrite(brocheMot, valVitesse);
+
+   Serial.print("Potentiomètre= ");
+   Serial.print(valPotent);
+   Serial.print("/t Moteur= ");
+   Serial.println(valVitesse);
+
+   delay(2);
+}
