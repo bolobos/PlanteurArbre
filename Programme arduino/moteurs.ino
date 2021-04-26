@@ -12,6 +12,13 @@ const int interLEFT = 10;
 // Variables
 int Power = 80; //Motor velocity between 0 and 255
 
+/*	AVANT   : ^ ^
+	ARRIERE : v v 
+	DROITE  : ^ v
+	GAUCHE  : v ^
+	Interpoler entre les différents états
+*/
+
 void setup(){
   pinMode(MotorForward1,OUTPUT);
   pinMode(MotorReverse1,OUTPUT);
