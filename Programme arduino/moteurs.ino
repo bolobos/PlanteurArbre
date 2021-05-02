@@ -1,16 +1,23 @@
-// Constants
-const int enableBridge1 = 2;
-const int MotorForward1 = 3;
-const int MotorReverse1 = 4;
-const int MotorForward2 = 5;
-const int MotorReverse2 = 6;
-const int interTOP = 7;
-const int interDOWN = 8;
-const int interRIGHT = 9;
-const int interLEFT = 10;
+// Numéros de broche
+#define enableBridge1 2
+#define MotorForward1 3
+#define MotorReverse1 4
+#define MotorForward2 5
+#define MotorReverse2 6
+#define interTOP 7
+#define interDOWN 8
+#define interRIGHT 9
+#define interLEFT 10
 
 // Variables
 int Power = 80; //Motor velocity between 0 and 255
+
+/*	AVANT   : ^ ^
+	ARRIERE : v v 
+	DROITE  : ^ v
+	GAUCHE  : v ^
+	Interpoler entre les différents états
+*/
 
 void setup(){
   pinMode(MotorForward1,OUTPUT);
