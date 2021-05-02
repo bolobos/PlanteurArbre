@@ -33,7 +33,7 @@ void loop(){
 
 void top(){
     
-  if (interTOP == true){
+  if (digitalRead(interTOP) == true){
     analogWrite(MotorForward1,Power);
     analogWrite(MotorReverse1,0);
     analogWrite(MotorForward2,Power);
@@ -43,7 +43,7 @@ void top(){
 
 void down(){
   
-  if (interDOWN == true){
+  if (digitalRead(interDOWN) == true){
     analogWrite(MotorForward1,0);
     analogWrite(MotorReverse1,Power);
     analogWrite(MotorForward2,0);
@@ -53,7 +53,7 @@ void down(){
 
 void right(){
 
-  if (interRIGHT == true){
+  if (digitalRead(interRIGHT) == true){
     analogWrite(MotorForward1,0);
     analogWrite(MotorReverse1,Power);
     analogWrite(MotorForward1,Power);
@@ -63,7 +63,7 @@ void right(){
 
 void left(){
 
-  if (interLEFT == true){
+  if (digitalRead(interLEFT) == true){
     analogWrite(MotorForward1,Power);
     analogWrite(MotorReverse1,0);
     analogWrite(MotorForward1,0);
@@ -74,14 +74,17 @@ void left(){
 
 
 
-if (interRIGHT == true && interTOP == true){
+if (digitalRead(interRIGHT) == true && digitalRead(interTOP) == true){
     analogWrite(MotorForward1,Power);
     analogWrite(MotorReverse1,Power);
   } 
 
-if (interRIGHT == true && interTOP == true){
+if (digitalRead(interRIGHT) == true && digitalRead(interTOP) == true){
   analogWrite(MotorForward1,Power);
   analogWrite(MotorReverse1,Power);
   } 
 
 // TO DO---> rajouter quand deux boutons sont appuyés ...
+
+
+digitalRead()

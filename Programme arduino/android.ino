@@ -1,4 +1,4 @@
-//pr l'instant, copier coller d'un autre projetS
+//pr l'instant, copier coller d'un autre projet
 
 String mode = "";
 String color = "";
