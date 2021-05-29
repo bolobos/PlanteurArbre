@@ -1,15 +1,13 @@
 //Parameters
-const int input_voltage  = 9;//V
-const int nominal_voltage  = 12;////V
-const int MAX_SPEED  = 255;
-const int directionA  = 12;
-const int directionB  = 13;
-const int brakeA  = 9;
-const int brakeB  = 8;
-const int speedA  = 3;
-const int speedB  = 11;
-const int in2  = A2;
-const int in3  = A3;
+#define input_voltage 9//V
+#define nominal_voltage 12////V
+#define MAX_SPEED 255
+#define DIRECTION_A 12
+#define DIRECTION_B 13
+#define BRAKE_A 9
+#define BRAKE_B 8
+#define SPEED_A 3
+#define SPEED_B 11
 
 #define JOY_X 14
 #define JOY_Y 15
@@ -19,10 +17,10 @@ void setup() {
  Serial.begin(9600);
  Serial.println(F("Initialize System"));
  //Init Motor Shield
- pinMode(directionA, OUTPUT); //Initiates Motor Channel A pin
- pinMode(brakeA, OUTPUT); //Initiates Brake Channel A pin
- pinMode(directionB, OUTPUT); //Initiates Motor Channel B pin
- pinMode(brakeB, OUTPUT); //Initiates Brake Channel B pin
+ pinMode(DIRECTION_A, OUTPUT); //Initiates Motor Channel A pin
+ pinMode(BRAKE_A, OUTPUT); //Initiates Brake Channel A pin
+ pinMode(DIRECTION_B, OUTPUT); //Initiates Motor Channel B pin
+ pinMode(BRAKE_B, OUTPUT); //Initiates Brake Channel B pin
 }
 
 void loop() {
@@ -36,13 +34,13 @@ void loop() {
   Serial.print(valX);
   Serial.print(" ");
   Serial.println(valY);
-  digitalWrite(directionA, invertedX);
-  digitalWrite(directionB, invertedY);
-  digitalWrite(brakeA, LOW);   //Disengage the Brake for Channel A
-  digitalWrite(brakeB, LOW);   //Disengage the Brake for Channel B
+  digitalWrite(DIRECTION_A, invertedX);
+  digitalWrite(DIRECTION_B, invertedY);
+  digitalWrite(BRAKE_A, LOW);   //Disengage the Brake for Channel A
+  digitalWrite(BRAKE_B, LOW);   //Disengage the Brake for Channel B
 
-  analogWrite(speedA, abs(scaledX));
-  analogWrite(speedB, abs(scaledY));
+  analogWrite(SPEED_A, abs(scaledX));
+  analogWrite(SPEED_B, abs(scaledY));
   delete v;
 }
 
@@ -79,10 +77,10 @@ int* getValue(int valX, int valY) {
 
 void dcStop() { /* function dcStop */
  //// stop motors A and B
- digitalWrite(brakeA, HIGH);   //Engage the Brake for Channel A
- analogWrite(speedA, 0);
- digitalWrite(brakeB, HIGH);   //Engage the Brake for Channel B
- analogWrite(speedB, 0);
+ digitalWrite(BRAKE_A, HIGH);   //Engage the Brake for Channel A
+ analogWrite(SPEED_A, 0);
+ digitalWrite(BRAKE_B, HIGH);   //Engage the Brake for Channel B
+ analogWrite(SPEED_B, 0);
 }
 
 double getPhase(int x, int y, int mod) {
