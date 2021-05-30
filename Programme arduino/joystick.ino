@@ -1,28 +1,40 @@
 // Joystick arduino
 
+#include <SoftwareSerial.h>
 
+#define rxPin 11 // Broche 11 en tant que RX, à raccorder sur TX du HC-05
+#define txPin 10 // Broche 10 en tant que TX, à raccorder sur RX du HC-05
 
+SoftwareSerial SerialB(rxPin, txPin);
 
-int dataIn[4] {0,0,0,0};
+int dataIn[3] {0,0,0};
 int in_byte = 0;
 int array_index;
 
 void setup() {
-  Serial.begin (9600);
+
+  pinMode(rxPin, INPUT);
+  pinMode(txPin, OUTPUT);
+  SerialB.begin (38400);
+  Serial.begin(38400);
 }
 
 void loop() {
-  if (Serial.available() > 0) {
-    in_byte ==Serial.read();
-    if (in_byte == (255)) {
-      array_index = 0;
+  
+  int i = 0;
+  char someChar[32] = {0};
+  // when characters arrive over the serial port...
+  if(Serial.available()) {
+    do{
+      someChar[i++] = Serial.read();
+    delay(3);
+    }while (Serial.available() > 0);
+    mySerial.println(someChar);
+    Serial.println(someChar);
     }
-    dataIn[array_index] = in_byte;
-    array_index = array_index +1;
-  }
+  while(mySerial.available())
+ Serial.print((char)mySerial.read());
 
-  Serial.print (dataIn[0]);
-  Serial.print(", button:");
   Serial.print(dataIn[1]);
   Serial.print(", x:");
   Serial.print(dataIn[2]);
